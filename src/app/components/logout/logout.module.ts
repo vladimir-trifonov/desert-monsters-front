@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { Router } from '@angular/router';
 import { routing } from './logout.routing';
 
@@ -13,7 +12,7 @@ export default class LogoutModule {
     localStorage.removeItem('profile');
     localStorage.removeItem('id_token');
 
-    // Navigate to main route
-    this.router.navigate(['/']);
+    // Navigate to login route
+    this.router.navigate(['/login']);
   }
 }

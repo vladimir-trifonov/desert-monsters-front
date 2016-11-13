@@ -37,18 +37,18 @@ export class Login {
       })
         .map(res => res.json())
         .subscribe(
-        data => {
-          if (!data || !data.success) {
-            return;
-          }
+          data => {
+            if (!data || !data.success) {
+              return;
+            }
 
-          localStorage.setItem('id_token', data.token);
-          localStorage.setItem('profile', JSON.stringify(data.profile));
+            localStorage.setItem('id_token', data.token);
+            localStorage.setItem('profile', JSON.stringify(data.profile));
 
-          // Navigate to main route
-          this.router.navigate(['/']);
-        },
-        err => console.log(err)
+            // Navigate to dashboard route
+            this.router.navigate(['pages/dashboard']);
+          },
+          err => console.log(err)
         );
     }
   }
