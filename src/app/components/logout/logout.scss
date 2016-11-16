@@ -1,0 +1,11 @@
+@import '../../theme/sass/auth';
+
+#logout-wait {
+  $loginWaitUrl: $images-root + 'logout-wait.jpg';
+  background: url($loginWaitUrl);
+  background-repeat: no-repeat;
+  width: 475px;
+  height: 430px;
+  background-size: cover;
+  background-position-y: -30px;
+}

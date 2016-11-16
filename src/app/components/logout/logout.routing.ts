@@ -1,9 +1,11 @@
 import { Routes, RouterModule }  from '@angular/router';
+import { Logout } from './logout.component';
 
 // noinspection TypeScriptValidateTypes
 const routes: Routes = [
   {
-    path: ''
+    path: '',
+    component: Logout
   }
 ];
 

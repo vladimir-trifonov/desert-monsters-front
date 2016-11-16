@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 
-import { Auth, AuthGuard } from './auth';
+import { AuthService, AuthGuardService } from './auth';
 import { routing } from './components.routing';
 
 @NgModule({
   imports: [routing],
-  providers: [Auth, AuthGuard]
+  providers: [AuthService, AuthGuardService]
 })
 export class ComponentsModule {
 }

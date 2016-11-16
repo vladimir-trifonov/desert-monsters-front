@@ -56,10 +56,10 @@ $danger-bg: tint($danger, 20%);
 $activelink: $primary;
 $hoverlink: $primary-dark;
 
-@mixin body-bg() {
+@mixin body-bg($bg: 'blur-bg') {
   background-color: $body-bg;
 
-  $mainBgUrl: $images-root + 'blur-bg.jpg';
+  $mainBgUrl: $images-root + $bg + '.jpg';
 
   &::before {
     content: '';

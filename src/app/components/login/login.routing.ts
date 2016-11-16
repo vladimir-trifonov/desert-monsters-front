@@ -1,5 +1,4 @@
 import { Routes, RouterModule }  from '@angular/router';
-
 import { Login } from './login.component';
 
 // noinspection TypeScriptValidateTypes
