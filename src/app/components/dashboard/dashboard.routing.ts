@@ -1,7 +1,7 @@
 import { Routes, RouterModule }  from '@angular/router';
 
 import { Dashboard } from './dashboard.component';
-import { AuthGuardService } from '../../components/auth';
+import { AuthGuardService } from '../auth';
 
 // noinspection TypeScriptValidateTypes
 const routes: Routes = [

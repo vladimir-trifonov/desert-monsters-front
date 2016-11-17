@@ -16,7 +16,7 @@ export class Logout {
     this.authService.deleteAuth();
     // Navigate to login route
 
-    logoutService.Logout(
+    logoutService.logout(
       () => {
         setTimeout(() => {
           this.router.navigate(['/login']);

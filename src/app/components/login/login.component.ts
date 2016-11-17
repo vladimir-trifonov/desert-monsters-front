@@ -20,7 +20,7 @@ export class Login implements OnInit, OnDestroy {
   
   loaded:boolean = true;
   busy: boolean = false;
-  
+
   private sub: any;
 
   constructor(fb: FormBuilder, private authService: AuthService, private router: Router, private route: ActivatedRoute, private loginService: LoginService) {
@@ -35,7 +35,7 @@ export class Login implements OnInit, OnDestroy {
         if (params['state'] === 'login') {
           this.busy = true;
           // Login
-          this.loginService.Login(
+          this.loginService.login(
             params['code'],
             () => this.router.navigate(['pages/dashboard']),
             (error: any): void => {
