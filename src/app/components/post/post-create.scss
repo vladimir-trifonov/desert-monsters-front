@@ -1,85 +1,10 @@
 @import '../../theme/sass/conf/conf';
 
-input.task-todo {
+input.task-post-create {
   margin-bottom: 8px;
 }
 
-ul.todo-list {
-  margin: 0;
-  padding: 0;
-  .placeholder, .ui-sortable-placeholder {
-  }
-  li {
-    margin: 0 0 -1px 0;
-    padding: 12px;
-    list-style: none;
-    position: relative;
-    border: 1px solid $input-border;
-    cursor: grab;
-    height: 42px;
-    i.remove-todo {
-      position: absolute;
-      cursor: pointer;
-      top: 0px;
-      right: 12px;
-      font-size: 32px;
-      transition: color 0.2s;
-      color: rgba($input-border, 0.5);
-      visibility: hidden;
-      line-height: 42px;
-      &:hover {
-        color: $input-border;
-      }
-    }
-    &:hover {
-      i.remove-todo {
-        visibility: visible;
-      }
-    }
-
-    &.checked {
-      .todo-text {
-        color: $content-text;
-      }
-      &:before {
-        background: $input-border !important;
-      }
-    }
-
-    i.mark {
-      display: block;
-      position: absolute;
-      top: -1px;
-      left: -1px;
-      height: 42px;
-      min-width: 4px;
-      background: $input-border;
-      cursor: pointer;
-      transition: min-width 0.3s ease-out;
-    }
-
-    &.active {
-      i.mark {
-        min-width: 40px;
-      }
-      label.todo-checkbox > span {
-        &:before {
-          color: white;
-          content: '\f10c';
-          margin-right: 20px;
-          transition: margin-right 0.1s ease-out;
-          transition-delay: 0.2s;
-          float: none;
-        }
-      }
-      label.todo-checkbox > input:checked + span:before {
-        content: '\f00c';
-      }
-    }
-  }
-}
-
-label.todo-checkbox {
+label.post-create-checkbox {
   width: 100%;
   padding-right: 25px;
   min-height: 16px;
@@ -101,12 +26,12 @@ label.todo-checkbox {
 
 .ng2, .blur {
 
-  .task-todo-container {
-    .todo-panel.panel {
+  .task-post-create-container {
+    .post-create-panel.panel {
       color: white;
       opacity: 0.9;
     }
-    input.task-todo {
+    input.task-post-create {
       color: white;
       width: calc(100% - 25px);
       border-radius: 0;
@@ -126,62 +51,6 @@ label.todo-checkbox {
       margin-right: 5px;
       font-size: 25px;
       cursor: pointer;
-    }
-
-    ul.todo-list {
-      li {
-        margin: 0;
-        border: none;
-        font-weight: $font-light;
-
-        .blur-container {
-          height: 40px;
-          position: absolute;
-          width: calc(100% + 40px);;
-          top: 0;
-          left: -25px;
-          overflow-y: hidden;
-        }
-        &:hover {
-          .blur-container {
-            box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.12);
-          }
-          .blur-box {
-            height: 100%;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
-            -webkit-filter: blur(3px);
-          }
-        }
-        i.remove-todo {
-          color: white;
-          opacity: 0.4;
-          &:hover {
-            color: white;
-            opacity: 0.95;
-          }
-        }
-        i.mark {
-          min-width: 40px;
-          display: none;
-        }
-        label.todo-checkbox > span {
-          &:before {
-            position: absolute;
-            color: $content-text;
-            content: '\f10c';
-            float: none;
-            margin-right: 6px;
-            transition: none;
-          }
-        }
-        &.checked {
-          label.todo-checkbox > span {
-            &:before {
-              content: '\f00c';
-            }
-          }
-        }
-      }
     }
 
     .box-shadow-border {
