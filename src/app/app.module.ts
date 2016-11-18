@@ -70,7 +70,7 @@ export class AppModule {
   constructor(public appRef: ApplicationRef, public appState: AppState, private ngRedux: NgRedux<IAppState>,
     private devTools: DevToolsExtension) {
     let enhancers = [];
-    console.log(ENV);
+    
     if ('development' === ENV) {
       enhancers [devTools.enhancer()];
     }

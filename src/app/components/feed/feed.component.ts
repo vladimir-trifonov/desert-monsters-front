@@ -1,6 +1,9 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { AsyncPipe } from '@angular2/common';
 
-import {FeedService} from './feed.service';
+import { select } from 'ng2-redux';
+
+import { FeedActions } from '../../actions/feedActions';
 
 @Component({
   selector: 'feed',
@@ -9,21 +12,13 @@ import {FeedService} from './feed.service';
   template: require('./feed.html')
 })
 export class Feed {
+  @select('feed') feed$: any;
 
-  public feed:Array<Object>;
+  constructor(private actions: FeedActions) { }
 
-  constructor(private _feedService:FeedService) {
-  }
+  ngOnInit() { }
 
-  ngOnInit() {
-    this._loadFeed();
-  }
-
-  expandMessage (message){
+  expandMessage(message) {
     message.expanded = !message.expanded;
-  }
-
-  private _loadFeed() {
-    this.feed = this._feedService.getData();
   }
 }

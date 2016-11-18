@@ -1,7 +1,12 @@
-import { IAppState } from '../store';
+import { TFeed } from '../store';
 import { Reducer } from 'redux';
-import { Action } from 'flux-standard-action';
+import { FeedActions } from '../actions/feedActions';
 
-export const feedReducer: Reducer<IAppState> = (state: IAppState = [], action: Action<IAppState>): IAppState => {
+export const feedReducer: Reducer<TFeed> = (state: TFeed = [], action: any): TFeed => {
+  switch (action.type) {
+    case FeedActions.CREATE_FEED_POST: {
+      state = [action.feedPost, ...state];
+    }
+  }
   return state;
 };

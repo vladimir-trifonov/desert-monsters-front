@@ -8,8 +8,7 @@ import { routing }       from './dashboard.routing';
 
 import { Feed } from '../feed';
 import { PostCreate } from '../post';
-import { FeedService } from '../feed/feed.service';
-import { PostCreateService } from '../post/post-create.service';
+import { FeedActions } from '../../actions/feedActions';
 
 @NgModule({
   imports: [
@@ -24,8 +23,7 @@ import { PostCreateService } from '../post/post-create.service';
     Dashboard
   ],
   providers: [
-    FeedService,
-    PostCreateService
+    FeedActions
   ]
 })
 export default class DashboardModule {}
