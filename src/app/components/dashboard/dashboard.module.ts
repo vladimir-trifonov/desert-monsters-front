@@ -6,9 +6,9 @@ import { NgaModule } from '../../theme/nga.module';
 import { Dashboard } from './dashboard.component';
 import { routing }       from './dashboard.routing';
 
-import { Blog } from '../blog';
+import { Feed } from '../feed';
 import { PostCreate } from '../post';
-import { BlogService } from '../blog/blog.service';
+import { FeedService } from '../feed/feed.service';
 import { PostCreateService } from '../post/post-create.service';
 
 @NgModule({
@@ -19,12 +19,12 @@ import { PostCreateService } from '../post/post-create.service';
     routing
   ],
   declarations: [
-    Blog,
+    Feed,
     PostCreate,
     Dashboard
   ],
   providers: [
-    BlogService,
+    FeedService,
     PostCreateService
   ]
 })

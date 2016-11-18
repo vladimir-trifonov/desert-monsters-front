@@ -22,6 +22,10 @@ import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
 import { ComponentsModule } from './components';
 
+import { NgReduxModule, NgRedux, DevToolsExtension } from 'ng2-redux';
+import { rootReducer } from './reducers';
+import { RootState, IAppState } from './store'
+
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
@@ -51,7 +55,8 @@ type StoreType = {
     NgaModule.forRoot(),
     PagesModule,
     ComponentsModule,
-    routing
+    routing,
+    NgReduxModule.forRoot()
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
@@ -62,7 +67,18 @@ type StoreType = {
 
 export class AppModule {
 
-  constructor(public appRef: ApplicationRef, public appState: AppState) {
+  constructor(public appRef: ApplicationRef, public appState: AppState, private ngRedux: NgRedux<IAppState>,
+    private devTools: DevToolsExtension) {
+    let enhancers = [];
+    console.log(ENV);
+    if ('development' === ENV) {
+      enhancers [devTools.enhancer()];
+    }
+    this.ngRedux.configureStore(
+      rootReducer,
+      RootState, 
+      [],
+      enhancers);
   }
 
   hmrOnInit(store: StoreType) {

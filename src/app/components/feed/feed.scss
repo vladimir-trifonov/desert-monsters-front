@@ -1,10 +1,10 @@
 @import '../../theme/sass/conf/conf';
 
-.blog-panel .card-body{
+.feed-panel .card-body{
   padding: 10px 0;
 }
 
-.blog-message {
+.feed-message {
   $text-message-color: $content-text;
   $video-message-color: $danger;
   $image-message-color: $success;
@@ -46,7 +46,7 @@
       &.video-message {
         background: $video-message-color;
         &:after {
-          @include bg-image('theme/icon/blog/blog-video.svg');
+          @include bg-image('theme/icon/feed/feed-video.svg');
         }
       }
       &.image-message {
@@ -57,7 +57,7 @@
           margin-top: 1px;
           margin-left: 1px;
           border-radius: 5px;
-          @include bg-image('theme/icon/blog/blog-image.svg');
+          @include bg-image('theme/icon/feed/feed-image.svg');
         }
       }
       &.geo-message {
@@ -65,7 +65,7 @@
         &:after {
           width: 22px;
           height: 22px;
-          @include bg-image('theme/icon/blog/blog-location.svg');
+          @include bg-image('theme/icon/feed/feed-location.svg');
         }
       }
     }
