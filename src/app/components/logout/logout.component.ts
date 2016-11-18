@@ -20,7 +20,7 @@ export class Logout {
       () => {
         setTimeout(() => {
           this.router.navigate(['/login']);
-        }, 2000);
+        }, 1000);
       },
       (error: any): void => console.log(error)
     );
