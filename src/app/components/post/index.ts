@@ -1,1 +1,1 @@
-export * from './post-create.component';
+export * from './create-feed-post.component';

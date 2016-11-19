@@ -6,7 +6,7 @@ import { IAppState } from '../store';
 @Injectable()
 export class FeedActions {
   static CREATE_FEED_POST: string = 'CREATE_FEED_POST';
-  static REPLACE_FEED_POST_BY_UUID: string = 'REPLACE_FEED_POST_BY_UUID';
+  static UPDATE_FEED_POST: string = 'UPDATE_FEED_POST';
   constructor (
     private ngRedux: NgRedux<IAppState>) {}
 
@@ -14,7 +14,7 @@ export class FeedActions {
     this.ngRedux.dispatch({ type: FeedActions.CREATE_FEED_POST, feedPost });
   }
 
-  replaceFeedPostByUUID(tId, feedPost: Object): void {
-    this.ngRedux.dispatch({ type: FeedActions.REPLACE_FEED_POST_BY_UUID, feedPost });
+  updatePost(id, feedPost: Object): void {
+    this.ngRedux.dispatch({ type: FeedActions.UPDATE_FEED_POST, feedPost });
   }
 }

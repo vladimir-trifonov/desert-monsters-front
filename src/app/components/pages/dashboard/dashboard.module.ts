@@ -7,7 +7,7 @@ import { Dashboard } from './dashboard.component';
 import { routing }       from './dashboard.routing';
 
 import { Feed } from '../../feed';
-import { PostCreate } from '../../post';
+import { CreateFeedPost } from '../../post';
 import { FeedActions } from '../../../actions/feedActions';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { FeedActions } from '../../../actions/feedActions';
   ],
   declarations: [
     Feed,
-    PostCreate,
+    CreateFeedPost,
     Dashboard
   ],
   providers: [

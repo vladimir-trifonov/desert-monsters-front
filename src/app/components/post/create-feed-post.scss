@@ -1,10 +1,10 @@
 @import '../../theme/sass/conf/conf';
 
-input.task-post-create {
+input.task-create-feed-post {
   margin-bottom: 8px;
 }
 
-label.post-create-checkbox {
+label.create-feed-post-checkbox {
   width: 100%;
   padding-right: 25px;
   min-height: 16px;
@@ -26,12 +26,12 @@ label.post-create-checkbox {
 
 .ng2, .blur {
 
-  .task-post-create-container {
-    .post-create-panel.panel {
+  .task-create-feed-post-container {
+    .create-feed-post-panel.panel {
       color: white;
       opacity: 0.9;
     }
-    input.task-post-create {
+    input.task-create-feed-post {
       color: white;
       width: calc(100% - 25px);
       border-radius: 0;

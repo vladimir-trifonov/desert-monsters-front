@@ -9,12 +9,12 @@ import { FeedActions } from '../../actions/feedActions';
 var uuid = require('node-uuid');
 
 @Component({
-  selector: 'post-create',
+  selector: 'create-feed-post',
   encapsulation: ViewEncapsulation.None,
-  styles: [require('./post-create.scss')],
-  template: require('./post-create.html')
+  styles: [require('./create-feed-post.scss')],
+  template: require('./create-feed-post.html')
 })
-export class PostCreate {
+export class CreateFeedPost {
 
   public dashboardColors = this._baConfig.get().colors.dashboard;
   public newPostText: string = '';
@@ -37,7 +37,7 @@ export class PostCreate {
     })
       .map(res => res.json())
       .subscribe(
-      data => data && data.ok && this.actions.replaceFeedPostByUUID(tId, data),
+      data => data && data.ok && this.actions.updatePost(tId, data),
       err => console.log(err)
       );
     
