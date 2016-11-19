@@ -1,6 +1,6 @@
-export const PAGES_MENU = [
+export const LAYOUT_MENU = [
   {
-    path: 'pages',
+    path: 'layout',
     children: [
       {
         path: 'dashboard',

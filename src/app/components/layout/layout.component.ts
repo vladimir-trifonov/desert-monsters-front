@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 @Component({
-  selector: 'pages',
+  selector: 'layout',
   encapsulation: ViewEncapsulation.None,
   styles: [],
   template: `
@@ -20,7 +20,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
     <ba-back-top position="200"></ba-back-top>
     `
 })
-export class Pages {
+export class Layout {
 
   constructor() {
   }

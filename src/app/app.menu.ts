@@ -1,5 +1,5 @@
-import { PAGES_MENU } from './pages/pages.menu';
+import { LAYOUT_MENU } from './components/layout/layout.menu';
 
 export const MENU = [
-  ...PAGES_MENU
+  ...LAYOUT_MENU
 ];

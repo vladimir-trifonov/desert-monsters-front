@@ -19,7 +19,6 @@ import { App } from './app.component';
 import { AppState, InternalStateType } from './app.service';
 import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
-import { PagesModule } from './pages/pages.module';
 import { ComponentsModule } from './components';
 
 import { NgReduxModule, NgRedux, DevToolsExtension } from 'ng2-redux';
@@ -53,7 +52,6 @@ type StoreType = {
     FormsModule,
     ReactiveFormsModule,
     NgaModule.forRoot(),
-    PagesModule,
     ComponentsModule,
     routing,
     NgReduxModule.forRoot()
