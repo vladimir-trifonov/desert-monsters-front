@@ -62,12 +62,20 @@ $hoverlink: $primary-dark;
   $mainBgUrl: $images-root + $bg + '.jpg';
 
   &::before {
+    opacity: 0.9;
     content: '';
-    position: fixed;
-    width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
+    background-size: cover;
+    will-change: transform;
+    left: 0px;
+    right: 0px;
+    top: -50px;
+    bottom: -50px;
+    width: 1723px;
+    filter: blur(15px);
+    position: absolute;
+    content: '';
+    height: 100%;
     background: url($mainBgUrl) no-repeat center center;
     background-size: cover;
     will-change: transform;
