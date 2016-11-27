@@ -23,6 +23,10 @@ export class AuthService {
     return true;
   }
 
+  getUserProfile() {
+    return JSON.parse(localStorage.getItem('profile'));
+  }
+
   saveAuth(token, profile) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('profile', JSON.stringify(profile));
