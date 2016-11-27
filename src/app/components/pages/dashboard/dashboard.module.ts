@@ -8,7 +8,7 @@ import { routing }       from './dashboard.routing';
 
 import { Feed } from '../../feed';
 import { CreateFeedPost } from '../../post';
-import { FeedActions } from '../../../actions/feedActions';
+import { FeedActions } from '../../../actions/feed.actions';
 
 @NgModule({
   imports: [

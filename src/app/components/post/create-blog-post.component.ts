@@ -5,26 +5,26 @@ import { AuthHttp } from 'angular2-jwt';
 import { NgRedux, select } from 'ng2-redux';
 
 import { IAppState } from '../../store';
-import { FeedActions } from '../../actions/feed.actions';
+import { BlogActions } from '../../actions/blog.actions';
 var uuid = require('node-uuid');
 
 import { DiscoveryService } from '../../common/discovery.service';
 
 @Component({
-  selector: 'create-feed-post',
+  selector: 'create-blog-post',
   encapsulation: ViewEncapsulation.None,
-  styles: [require('./create-feed-post.scss')],
-  template: require('./create-feed-post.html')
+  styles: [require('./create-blog-post.scss')],
+  template: require('./create-blog-post.html')
 })
-export class CreateFeedPost {
+export class CreateBlogPost {
 
   public dashboardColors = this._baConfig.get().colors.dashboard;
   public newPostText: string = '';
   private busy = false;
 
-  constructor(private _baConfig: BaThemeConfigProvider, private actions: FeedActions, private authHttp: AuthHttp, private discoverService: DiscoveryService) { }
+  constructor(private _baConfig: BaThemeConfigProvider, private actions: BlogActions, private authHttp: AuthHttp, private discoverService: DiscoveryService) { }
 
-  createFeedPost() {
+  createBlogPost() {
     if (this.busy) {
       return;
     }
@@ -35,21 +35,21 @@ export class CreateFeedPost {
     // Set state saving
     this.busy = true;
 
-    // Add the post on the feed with a temporary ID
-    this.actions.createFeedPost({
+    // Add the post on the blog with a temporary ID
+    this.actions.createBlogPost({
       id: tId,
       content: {
         text: this.newPostText,
-        type: 'feed:text'
+        type: 'blog:text'
       }
     });
 
     // When the saved post is returned from the db update the post data
-    this.discoverService.getServiceUrl('desert-monsters-wall-service',
+    this.discoverService.getServiceUrl('desert-monsters-blog-service',
       (url) => {
         this.authHttp.post(`http://${url}/posts`, {
           text: _self.newPostText,
-          type: 'feed:text'
+          type: 'blog:text'
         })
           .map(res => res.json())
           .subscribe(

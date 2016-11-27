@@ -1,0 +1,63 @@
+@import '../../theme/sass/conf/conf';
+
+input.task-create-blog-post {
+  margin-bottom: 8px;
+}
+
+label.create-blog-post-checkbox {
+  width: 100%;
+  padding-right: 25px;
+  min-height: 16px;
+  cursor: pointer;
+  > span {
+    white-space: nowrap;
+    height: 16px;
+    &:before {
+      border: none;
+      color: $help-text;
+      transition: all 0.15s ease-out;
+    }
+  }
+}
+
+.add-item-icon {
+  display: none;
+}
+
+.ng2, .blur {
+
+  .task-create-blog-post-container {
+    .create-blog-post-panel.panel {
+      color: white;
+      opacity: 0.9;
+    }
+    input.task-create-blog-post {
+      color: white;
+      width: calc(100% - 25px);
+      border-radius: 0;
+      border: none;
+      background: transparent;
+      &:focus {
+        outline: none;
+        background-color: transparent;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.12);
+      }
+    }
+    .add-item-icon {
+      display: block;
+      float: right;
+      margin-top: -45px;
+      margin-right: 5px;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    .box-shadow-border {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.12);
+      width: calc(100% + 44px);
+      margin-left: -22px;
+    }
+  }
+}

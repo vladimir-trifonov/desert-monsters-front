@@ -1,10 +1,10 @@
 @import '../../theme/sass/conf/conf';
 
-.feed-panel .card-body{
+.blog-panel .card-body{
   padding: 10px 0;
 }
 
-.feed-message {
+.blog-message {
   $text-message-color: $content-text;
   $video-message-color: $danger;
   $image-message-color: $success;
@@ -59,7 +59,7 @@
     cursor: pointer;
     position: relative;
     border-radius: 5px;
-    margin: 0 0 0 80px;
+    margin: 0;
     padding: 5px 20px;
     color: $text-message-color;
     width: 280px;
