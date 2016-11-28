@@ -1,5 +1,6 @@
 @import '../../sass/conf/conf';
 @import '../../components/baMsgCenter/baMsgCenter';
+@import '../../components/baLinksNav/baLinksNav';
 
 .page-top {
   background-color: $sidebar;
@@ -35,6 +36,12 @@ a.al-logo {
   span {
     color: $primary;
   }
+}
+
+.user-links {
+  float: right;
+  min-width: 230px;
+  margin-top: 10px;
 }
 
 .user-profile {

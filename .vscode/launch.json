@@ -1,27 +1,37 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Launch Chrome against localhost, with sourcemaps",
-      "type": "chrome",
-      "request": "launch",
-      "url": "http://localhost:3000/*",
-      "runtimeArgs": [
-        "--disable-web-security",
-        "--user-data-dir",
-        "--remote-debugging-port=9222"
-      ],
-      "sourceMaps": true,
-      "webRoot": "${workspaceRoot}"
-    },
-    {
-      "name": "Attach to Chrome, with sourcemaps",
-      "type": "chrome",
-      "request": "attach",
-      "url": "http://localhost:3000/*",
-      "port": 9222,
-      "sourceMaps": true,
-      "webRoot": "${workspaceRoot}"
-    }
-  ]
+	// Use IntelliSense to find out which attributes exist for node debugging
+	// Use hover for the description of the existing attributes
+	// For further information visit https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Launch Program",
+			"type": "node2",
+			"request": "launch",
+			"program": "${workspaceRoot}/server:dev",
+			"cwd": "${workspaceRoot}",
+			"outFiles": [],
+			"sourceMaps": true
+		},
+		{
+			"name": "Attach to Process",
+			"type": "node2",
+			"request": "attach",
+			"port": 9229,
+			"outFiles": [],
+			"sourceMaps": true
+		},
+		{
+			"name": "Debug",
+			"type": "chrome",
+			"request": "launch",
+			"runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+			"runtimeArgs": [
+				"${workspaceRoot}/build",
+				"--enable-logging",
+				"--remote-debugging-port=9222"
+			],
+			"sourceMaps": false
+		}
+	]
 }
