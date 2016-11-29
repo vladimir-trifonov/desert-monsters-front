@@ -1,5 +1,7 @@
-<div class="task-create-blog-post-container">
-  <input type="text" value="" class="form-control task-create-blog-post" placeholder="Text.." [(ngModel)]="newPostText"/>
-  <i (click)="createBlogPost()" class="add-item-icon ion-plus-round"></i>
-  <div class="box-shadow-border"></div>
-</div>
+<ba-card title="Create" baCardClass="blog-comply-panel">
+  <div class="task-create-blog-post-container">
+    <input type="text" value="" class="form-control task-create-blog-post" placeholder="Text.." [(ngModel)]="newPostText" />
+    <i (click)="createBlogPost()" class="add-item-icon ion-plus-round"></i>
+    <div class="box-shadow-border"></div>
+  </div>
+</ba-card>

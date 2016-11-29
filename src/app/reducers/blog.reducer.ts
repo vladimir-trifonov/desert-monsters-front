@@ -10,11 +10,19 @@ export const blogReducer: Reducer<TBlog> = (state: TBlog = [], action: any): TBl
     case BlogActions.GET_BLOG_POSTS:
       state = action.blogPosts || state;
       break;
-    case BlogActions.DELETE_BLOG_POST:
-      let idx = state.findIndex((post: any) => post.id === action.id);
+    case BlogActions.UPDATE_BLOG_POST:
+      let updateId = state.findIndex((post: any) => post.id === action.id);
       state = [
-        ...state.slice(0, idx),
-        ...state.slice(idx + 1)
+        ...state.slice(0, updateId),
+        action.blogPost,
+        ...state.slice(updateId + 1)
+      ];
+      break;
+    case BlogActions.DELETE_BLOG_POST:
+      let delId = state.findIndex((post: any) => post.id === action.id);
+      state = [
+        ...state.slice(0, delId),
+        ...state.slice(delId + 1)
       ];
       break;
   }

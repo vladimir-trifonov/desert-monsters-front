@@ -4,11 +4,11 @@
   padding: 10px 0;
 }
 
-.blog-message {
-  $text-message-color: $content-text;
-  $video-message-color: $danger;
-  $image-message-color: $success;
-  $geo-message-color: $primary;
+.blog-post {
+  $text-post-color: $content-text;
+  $video-post-color: $danger;
+  $image-post-color: $success;
+  $geo-post-color: $primary;
   padding: 10px 0 ;
   border-bottom: 1px solid rgba(0,0,0,0.12);
   box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.12);
@@ -20,7 +20,7 @@
     display: none!important;
   }
 
-  .message-icon {
+  .post-icon {
     cursor: pointer;
     width: 60px;
     height: 60px;
@@ -61,26 +61,29 @@
     border-radius: 5px;
     margin: 0;
     padding: 5px 20px;
-    color: $text-message-color;
+    color: $text-post-color;
     width: 280px;
     height: 70px;
 
-    &.text-message {
+    &.text-post {
       font-size: 12px;
       width: inherit;
-      max-width: calc(100% - 80px);
+      max-width: 100%;
       height: inherit;
       min-height: 30px;
       &:before {
         display: block;
       }
-      .message-content {
+      .post-content {
         font-size: 20px;
         line-height: 25px;
         font-weight: $font-light;
       }
+      .ago-time {
+        line-height: 15px;
+      }
     }
-    &.small-message {
+    &.small-post {
       width: 155px;
       height: 145px;
       .preview {
@@ -96,7 +99,7 @@
     }
   }
 
-  .message-header {
+  .post-header {
     font-size: 12px;
     padding-bottom: 5px;
     .author {
@@ -105,7 +108,7 @@
     }
   }
 
-  .message-content {
+  .post-content {
     font-size: 18px;
     line-height: 20px;
   }
@@ -121,13 +124,12 @@
     }
   }
 
-  .message-time {
+  .post-time {
     width: 100%;
     left: 0;
     font-size: 11px;
     padding-top: 10px;
     color: $help-text;
-    margin-bottom: 5px;
     .post-time {
       float: left;
     }

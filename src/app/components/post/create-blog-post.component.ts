@@ -34,10 +34,11 @@ export class CreateBlogPost {
 
     // Set state saving
     this.busy = true;
-
+    
     // Add the post on the blog with a temporary ID
     this.actions.createBlogPost({
       id: tId,
+      createdAt: new Date(),
       content: {
         text: this.newPostText,
         type: 'blog:text'
@@ -55,7 +56,7 @@ export class CreateBlogPost {
           .subscribe(
           data => {
             _self.busy = false;
-            data && data.ok && _self.actions.updatePost(tId, data);
+            data && data.ok && data.post && _self.actions.updatePost(tId, data.post);
 
             // Clear the input field
             this.newPostText = '';

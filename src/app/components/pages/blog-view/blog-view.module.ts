@@ -6,6 +6,7 @@ import { NgaModule } from '../../../theme/nga.module';
 import { BlogView } from './blog-view.component';
 import { routing }       from './blog-view.routing';
 
+import { UserInfoBasic } from '../../user';
 import { Blog } from '../../blog';
 import { CreateBlogPost } from '../../post';
 import { BlogActions } from '../../../actions/blog.actions';
@@ -18,6 +19,7 @@ import { BlogActions } from '../../../actions/blog.actions';
     routing
   ],
   declarations: [
+    UserInfoBasic,
     Blog,
     CreateBlogPost,
     BlogView

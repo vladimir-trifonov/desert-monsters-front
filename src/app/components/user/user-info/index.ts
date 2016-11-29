@@ -1,0 +1,1 @@
+export * from './basic/user-info-basic.component';

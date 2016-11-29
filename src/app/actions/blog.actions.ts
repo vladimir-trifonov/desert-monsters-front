@@ -17,7 +17,7 @@ export class BlogActions {
   }
 
   updatePost(id, blogPost: Object): void {
-    this.ngRedux.dispatch({ type: BlogActions.UPDATE_BLOG_POST, blogPost });
+    this.ngRedux.dispatch({ type: BlogActions.UPDATE_BLOG_POST, id, blogPost });
   }
 
   getPosts(blogPosts: Array<Object>): void {
