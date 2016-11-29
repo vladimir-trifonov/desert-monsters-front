@@ -1,0 +1,21 @@
+<ba-card title="Posts" baCardClass="large-card forum-comply-panel with-scroll">
+  <div class="forum-posts-container">
+    <div class="forum-post" *ngFor="let post of forumPost$ | async" data-id="{{post._id}}">
+      <div class="text-block text-post">
+        <div class="post-content line-clamp">{{ post.content.text }}
+          <div class="post-content extra line-clamp">{{ post.content.extra }}
+          </div>
+          <div class="post-time">
+            <!--<div class="post-time">
+          {{ post.time }}
+        </div>-->
+            <div class="ago-time">
+              {{ post.createdAt | date:'d'}}/{{ post.createdAt | date:'MM'}}/{{ post.createdAt | date:'y'}}&nbsp;{{ post.createdAt | date:'HH'}}:{{
+              post.createdAt | date:'mm'}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ba-card>

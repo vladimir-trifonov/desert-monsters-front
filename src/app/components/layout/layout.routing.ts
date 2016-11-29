@@ -8,7 +8,8 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'blog', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: () => System.import('../pages/dashboard/dashboard.module') },
-      { path: 'blog', loadChildren: () => System.import('../pages/blog-view/blog-view.module') }
+      { path: 'blog', loadChildren: () => System.import('../pages/blog-view/blog-view.module') },
+      { path: 'forum', loadChildren: () => System.import('../pages/forum-view/forum-view.module') }
     ]
   }
 ];
