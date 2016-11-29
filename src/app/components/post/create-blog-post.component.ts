@@ -56,7 +56,8 @@ export class CreateBlogPost {
           .subscribe(
           data => {
             _self.busy = false;
-            data && data.ok && data.post && _self.actions.updatePost(tId, data.post);
+            
+            data && data.ok && !!data.post && _self.actions.updatePost(tId, data.post);
 
             // Clear the input field
             this.newPostText = '';
