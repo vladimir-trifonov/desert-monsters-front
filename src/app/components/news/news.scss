@@ -1,27 +1,30 @@
 @import '../../theme/sass/conf/conf';
 
-.feed-panel .card-body{
+.news-panel .card-body{
   padding: 10px 0;
 }
 
-.feed-message {
-  $text-message-color: $content-text;
-  $video-message-color: $danger;
-  $image-message-color: $success;
-  $geo-message-color: $primary;
+.news-post {
+  $text-post-color: $content-text;
+  $video-post-color: $danger;
+  $image-post-color: $success;
+  $geo-post-color: $primary;
   padding: 10px 0 ;
   border-bottom: 1px solid rgba(0,0,0,0.12);
   box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.12);
   &:first-child {
     padding-top: 0;
   }
+  
+  .extra {
+    color: $text-dark;
+  }
 
   .hidden {
     display: none!important;
   }
 
-  .message-icon {
-    cursor: pointer;
+  .post-icon {
     width: 60px;
     height: 60px;
     float: left;
@@ -61,11 +64,11 @@
     border-radius: 5px;
     margin: 0 0 0 80px;
     padding: 5px 20px;
-    color: $text-message-color;
+    color: $text-post-color;
     width: 280px;
     height: 70px;
 
-    &.text-message {
+    &.text-post {
       font-size: 12px;
       width: inherit;
       max-width: calc(100% - 80px);
@@ -74,13 +77,13 @@
       &:before {
         display: block;
       }
-      .message-content {
+      .post-content {
         font-size: 12px;
         line-height: 15px;
         font-weight: $font-light;
       }
     }
-    &.small-message {
+    &.small-post {
       width: 155px;
       height: 145px;
       .preview {
@@ -96,7 +99,7 @@
     }
   }
 
-  .message-header {
+  .post-header {
     font-size: 12px;
     padding-bottom: 5px;
     .author {
@@ -105,7 +108,7 @@
     }
   }
 
-  .message-content {
+  .post-content {
     font-size: 18px;
     line-height: 20px;
   }
@@ -121,7 +124,7 @@
     }
   }
 
-  .message-time {
+  .post-time {
     width: 100%;
     left: 0;
     font-size: 11px;

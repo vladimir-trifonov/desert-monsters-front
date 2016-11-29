@@ -1,6 +1,9 @@
-<ba-card title="Posts" baCardClass="large-card blog-comply-panel with-scroll">
-  <div class="blog-posts-container">
-    <div class="blog-post" *ngFor="let post of blog$ | async" data-id="{{post._id}}">
+<ba-card title="News" baCardClass="large-card news-comply-panel with-scroll">
+  <div class="news-posts-container">
+    <div class="news-post" *ngFor="let post of posts" data-id="{{post._id}}" (click)="expandPost(post)">
+      <div class="post-icon">
+        <img class="user-avatar" src="{{ post.user.avatar || '../../../assets/img/app/profile/no-photo.png' }}">
+      </div>
       <div class="text-block text-post">
         <div class="post-content line-clamp">{{ post.content.text }}
           <div class="post-content extra line-clamp">{{ post.content.extra }}

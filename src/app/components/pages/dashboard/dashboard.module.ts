@@ -6,6 +6,7 @@ import { NgaModule } from '../../../theme/nga.module';
 import { Dashboard } from './dashboard.component';
 import { routing }       from './dashboard.routing';
 
+import { News } from '../../news';
 import { Feed } from '../../feed';
 import { CreateFeedPost } from '../../post';
 import { FeedActions } from '../../../actions/feed.actions';
@@ -18,6 +19,7 @@ import { FeedActions } from '../../../actions/feed.actions';
     routing
   ],
   declarations: [
+    News,
     Feed,
     CreateFeedPost,
     Dashboard

@@ -27,6 +27,14 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('profile'));
   }
 
+  getUserAvatar() {
+    return JSON.parse(localStorage.getItem('profile')).avatar;
+  }
+
+  getUserID() {
+    return JSON.parse(localStorage.getItem('profile')).id;
+  }
+
   saveAuth(token, profile) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('profile', JSON.stringify(profile));

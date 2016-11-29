@@ -11,7 +11,7 @@ export class BaProfilePicturePipe implements PipeTransform {
 
     switch (input) {
       case 'user':
-        let avatar = this.authService.getUserProfile().avatar;
+        let avatar = this.authService.getUserAvatar();
         return avatar ? avatar : defaultPhoto;
       default:
         return defaultPhoto;
