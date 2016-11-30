@@ -76,9 +76,15 @@
   }
   .description {
     display: inline-block;
-    padding: 20px 0 0 20px;
+    padding: 20px 0;
     font-size: 18px;
+    width: 100%;
     opacity: 0.9;
+
+    .user-name {
+      text-align: center;
+    }
+
     .description-stats {
       padding-top: 8px;
       font-size: 24px;
