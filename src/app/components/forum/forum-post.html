@@ -2,7 +2,7 @@
   <div class="forum-posts-container">
     <div class="forum-post" *ngFor="let post of forumPost$ | async" data-id="{{post._id}}">
       <div class="text-block text-post">
-        <div class="post-content line-clamp">{{ post.content.title }}
+        <div class="post-content line-clamp" (click)="expandPost(post)">{{ post.content.title }}
           <div class="post-time">
             <!--<div class="post-time">
           {{ post.time }}
@@ -12,6 +12,12 @@
               post.createdAt | date:'mm'}}
             </div>
           </div>
+        </div>
+        <div [ngClass]="{'hidden': !post.expanded}">
+          <div class="forum-post-comments-wrapper">
+            <div class="forum-post-comment" *ngFor="let comment of post.comments" data-id="{{comment._id}}">{{comment.content.text}}</div>
+          </div>
+          <create-forum-post-comment [postId]="post._id" [categoryId]="post.category"></create-forum-post-comment>
         </div>
       </div>
     </div>

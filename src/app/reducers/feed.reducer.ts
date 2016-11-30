@@ -11,18 +11,18 @@ export const feedReducer: Reducer<TFeed> = (state: TFeed = [], action: any): TFe
       state = action.feedPosts || state;
       break;
     case FeedActions.UPDATE_FEED_POST:
-      let updateId = state.findIndex((post: any) => post.id === action.id);
+      let updateIdx = state.findIndex((post: any) => post._id === action.id);
       state = [
-        ...state.slice(0, updateId),
+        ...state.slice(0, updateIdx),
         action.feedPost,
-        ...state.slice(updateId + 1)
+        ...state.slice(updateIdx + 1)
       ];
       break;
     case FeedActions.DELETE_FEED_POST:
-      let delId = state.findIndex((post: any) => post.id === action.id);
+      let delIdx = state.findIndex((post: any) => post._id === action.id);
       state = [
-        ...state.slice(0, delId),
-        ...state.slice(delId + 1)
+        ...state.slice(0, delIdx),
+        ...state.slice(delIdx + 1)
       ];
       break;
   }

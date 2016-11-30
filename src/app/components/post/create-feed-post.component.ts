@@ -37,7 +37,7 @@ export class CreateFeedPost {
     
     // Add the post on the feed with a temporary ID
     this.actions.createFeedPost({
-      id: tId,
+      _id: tId,
       createdAt: new Date(),
       content: {
         text: this.newPostText,

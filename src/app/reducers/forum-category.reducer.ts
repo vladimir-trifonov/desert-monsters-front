@@ -11,18 +11,18 @@ export const forumCategoryReducer: Reducer<TForumCategory> = (state: TForumCateg
       state = action.forumCategories || state;
       break;
     case ForumCategoryActions.UPDATE_FORUM_CATEGORY:
-      let updateId = state.findIndex((category: any) => category.id === action.id);
+      let updateIdx = state.findIndex((category: any) => category._id === action.id);
       state = [
-        ...state.slice(0, updateId),
+        ...state.slice(0, updateIdx),
         action.forumCategory,
-        ...state.slice(updateId + 1)
+        ...state.slice(updateIdx + 1)
       ];
       break;
     case ForumCategoryActions.DELETE_FORUM_CATEGORY:
-      let delId = state.findIndex((category: any) => category.id === action.id);
+      let delIdx = state.findIndex((category: any) => category._id === action.id);
       state = [
-        ...state.slice(0, delId),
-        ...state.slice(delId + 1)
+        ...state.slice(0, delIdx),
+        ...state.slice(delIdx + 1)
       ];
       break;
   }

@@ -12,6 +12,7 @@ export class ForumCategoryActions {
   static UPDATE_FORUM_CATEGORY: string = 'UPDATE_FORUM_CATEGORY';
   static GET_FORUM_CATEGORIES: string = 'GET_FORUM_CATEGORIES';
   static DELETE_FORUM_CATEGORY: string = 'DELETE_FORUM_CATEGORY';
+  
   constructor(private authHttp: AuthHttp, private discoverService: DiscoveryService,
     private ngRedux: NgRedux<IAppState>) { }
 
@@ -19,7 +20,7 @@ export class ForumCategoryActions {
     this.ngRedux.dispatch({ type: ForumCategoryActions.CREATE_FORUM_CATEGORY, forumCategory });
   }
 
-  updateCategory(id, forumCategory: Object): void {
+  updateCategory(id: String, forumCategory: Object): void {
     this.ngRedux.dispatch({ type: ForumCategoryActions.UPDATE_FORUM_CATEGORY, id, forumCategory });
   }
 
@@ -37,7 +38,7 @@ export class ForumCategoryActions {
     );
   }
 
-  deleteCategory(id): void {
+  deleteCategory(id: String): void {
     this.ngRedux.dispatch({ type: ForumCategoryActions.DELETE_FORUM_CATEGORY, id });
   }
 }

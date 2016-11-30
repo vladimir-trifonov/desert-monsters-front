@@ -12,6 +12,10 @@ export class ForumPostActions {
   static UPDATE_FORUM_POST: string = 'UPDATE_FORUM_POST';
   static GET_FORUM_POSTS: string = 'GET_FORUM_POSTS';
   static DELETE_FORUM_POST: string = 'DELETE_FORUM_POST';
+  static CREATE_FORUM_POST_COMMENT: string = 'CREATE_FORUM_POST_COMMENT';
+  static UPDATE_FORUM_POST_COMMENT: string = 'UPDATE_FORUM_POST_COMMENT';
+  static DELETE_FORUM_POST_COMMENT: string = 'DELETE_FORUM_POST_COMMENT';
+
   constructor(private authHttp: AuthHttp, private discoverService: DiscoveryService,
     private ngRedux: NgRedux<IAppState>) { }
 
@@ -43,5 +47,17 @@ export class ForumPostActions {
 
   deletePost(id): void {
     this.ngRedux.dispatch({ type: ForumPostActions.DELETE_FORUM_POST, id });
+  }
+
+  createPostComment(postId: String, forumPostComment: Object): void {
+    this.ngRedux.dispatch({ type: ForumPostActions.CREATE_FORUM_POST_COMMENT, postId, forumPostComment });
+  }
+
+  updatePostComment(postId: String, id: String, forumPostComment: Object): void {
+    this.ngRedux.dispatch({ type: ForumPostActions.UPDATE_FORUM_POST_COMMENT, postId, id, forumPostComment });
+  }
+
+  deletePostComment(postId: String, id): void {
+    this.ngRedux.dispatch({ type: ForumPostActions.DELETE_FORUM_POST_COMMENT, postId, id });
   }
 }

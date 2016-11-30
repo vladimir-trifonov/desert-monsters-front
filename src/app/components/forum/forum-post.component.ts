@@ -13,7 +13,7 @@ import { ForumPostActions } from '../../actions/forum-post.actions';
 })
 export class ForumPost {
   @select('forumPost') forumPost$: any;
-	@select('activeForumCategory') activeForumCategory$: Observable<any>;
+  @select('activeForumCategory') activeForumCategory$: Observable<any>;
 
   private currentCat: any;
 
@@ -27,7 +27,7 @@ export class ForumPost {
     });
   }
 
-  expandMessage(message) {
-    message.expanded = !message.expanded;
+  expandPost(post) {
+    post.expanded = !post.expanded;
   }
 }

@@ -1,7 +1,7 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { BaThemeConfigProvider } from '../../theme';
 import { AuthHttp } from 'angular2-jwt';
-import { Observable } from 'rxjs/Observable';
+
 import { NgRedux, select } from 'ng2-redux';
 
 import { IAppState } from '../../store';
@@ -11,23 +11,24 @@ var uuid = require('node-uuid');
 import { DiscoveryService } from '../../common/discovery.service';
 
 @Component({
-  selector: 'create-forum-post',
+  selector: 'create-forum-post-comment',
   encapsulation: ViewEncapsulation.None,
-  styles: [require('./create-forum-post.scss')],
-  template: require('./create-forum-post.html')
+  styles: [require('./create-forum-post-comment.scss')],
+  template: require('./create-forum-post-comment.html')
 })
-export class CreateForumPost {
-  @select('activeForumCategory') activeForumCategory$: Observable<any>;
+export class CreateForumPostComment {
 
   public dashboardColors = this._baConfig.get().colors.dashboard;
-  public newPostText: string = '';
+  public newCommentText: string = '';
   private busy = false;
-  private currentCat: any;
+
+  @Input() postId = null;
+  @Input() categoryId = null;
 
   constructor(private _baConfig: BaThemeConfigProvider, private actions: ForumPostActions, private authHttp: AuthHttp, private discoverService: DiscoveryService) { }
 
-  createForumPost() {
-    if (this.busy || !this.currentCat) {
+  createForumPostComment() {
+    if (this.busy) {
       return;
     }
 
@@ -37,36 +38,32 @@ export class CreateForumPost {
     // Set state saving
     this.busy = true;
 
-    // Add the post on the forum with a temporary ID
-    this.actions.createForumPost({
+    // Add the category on the forum with a temporary ID
+    this.actions.createPostComment(this.postId, {
       _id: tId,
       createdAt: new Date(),
-      content: {
-        title: this.newPostText,
-        type: 'forum:text'
-      }
+      text: this.newCommentText
     });
 
-    // When the saved post is returned from the db update the post data
+    // When the saved category is returned from the db update the category data
     this.discoverService.getServiceUrl('desert-monsters-forum-service',
       (url) => {
-        this.authHttp.post(`http://${url}/categories/${this.currentCat._id}/posts`, {
-          title: _self.newPostText,
-          type: 'forum:text'
+        this.authHttp.post(`http://${url}/categories/${this.categoryId}/posts/${this.postId}/comments`, {
+          text: this.newCommentText
         })
           .map(res => res.json())
           .subscribe(
           data => {
             _self.busy = false;
 
-            data && data.ok && !!data.post && _self.actions.updatePost(tId, data.post);
+            data && data.ok && !!data.comment && _self.actions.updatePostComment(this.postId, tId, data.comment);
 
             // Clear the input field
-            this.newPostText = '';
+            this.newCommentText = '';
           },
           err => {
             _self.busy = false;
-            _self.actions.deletePost(tId);
+            _self.actions.deletePostComment(this.postId, tId);
             console.log(err);
           });
       },
@@ -75,11 +72,5 @@ export class CreateForumPost {
         console.log(err)
       }
     );
-  }
-
-  ngOnInit() {
-    this.activeForumCategory$.subscribe((cat) => {
-      this.currentCat = cat;
-    });
   }
 }

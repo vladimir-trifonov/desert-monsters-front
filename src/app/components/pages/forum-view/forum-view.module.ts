@@ -13,6 +13,7 @@ import { CreateForumCategory } from '../../category';
 import { ForumPostActions } from '../../../actions/forum-post.actions';
 import { ForumCategoryActions } from '../../../actions/forum-category.actions';
 import { ActiveForumCategoryActions } from '../../../actions/active-forum-category.actions';
+import { CreateForumPostComment } from '../../comment';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { ActiveForumCategoryActions } from '../../../actions/active-forum-catego
     ForumCategory,
     CreateForumPost,
     CreateForumCategory,
-    ForumView
+    ForumView,
+    CreateForumPostComment
   ],
   providers: [
     ForumPostActions,

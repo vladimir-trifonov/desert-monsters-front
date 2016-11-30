@@ -13,6 +13,7 @@ export class FeedActions {
   static UPDATE_FEED_POST: string = 'UPDATE_FEED_POST';
   static GET_FEED_POSTS: string = 'GET_FEED_POSTS';
   static DELETE_FEED_POST: string = 'DELETE_FEED_POST';
+  
   constructor(private authService: AuthService, private authHttp: AuthHttp, private discoverService: DiscoveryService,
     private ngRedux: NgRedux<IAppState>) { }
 
@@ -20,7 +21,7 @@ export class FeedActions {
     this.ngRedux.dispatch({ type: FeedActions.CREATE_FEED_POST, feedPost });
   }
 
-  updatePost(id, feedPost: Object): void {
+  updatePost(id: String, feedPost: Object): void {
     this.ngRedux.dispatch({ type: FeedActions.UPDATE_FEED_POST, id, feedPost });
   }
 
@@ -41,7 +42,7 @@ export class FeedActions {
     );
   }
 
-  deletePost(id): void {
+  deletePost(id: String): void {
     this.ngRedux.dispatch({ type: FeedActions.DELETE_FEED_POST, id });
   }
 }

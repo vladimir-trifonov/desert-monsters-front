@@ -37,7 +37,7 @@ export class CreateBlogPost {
     
     // Add the post on the blog with a temporary ID
     this.actions.createBlogPost({
-      id: tId,
+      _id: tId,
       createdAt: new Date(),
       content: {
         text: this.newPostText,

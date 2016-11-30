@@ -4,22 +4,6 @@ input.task-create-forum-category {
   margin-bottom: 8px;
 }
 
-label.create-forum-category-checkbox {
-  width: 100%;
-  padding-right: 25px;
-  min-height: 16px;
-  cursor: pointer;
-  > span {
-    white-space: nowrap;
-    height: 16px;
-    &:before {
-      border: none;
-      color: $help-text;
-      transition: all 0.15s ease-out;
-    }
-  }
-}
-
 .add-item-icon {
   display: none;
 }

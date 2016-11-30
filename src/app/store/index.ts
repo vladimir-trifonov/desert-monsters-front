@@ -1,8 +1,8 @@
-export type TFeed = Array<Object>;
-export type TBlog = Array<Object>;
-export type TForumPost = Array<Object>;
-export type TForumCategory = Array<Object>;
-export type TActiveForumCategory = Object;
+export type TFeed = Array<any>;
+export type TBlog = Array<any>;
+export type TForumPost = Array<any>;
+export type TForumCategory = Array<any>;
+export type TActiveForumCategory = any;
 
 export interface IAppState {
   feed?: TFeed;

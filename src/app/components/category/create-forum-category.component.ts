@@ -37,7 +37,7 @@ export class CreateForumCategory {
     
     // Add the category on the forum with a temporary ID
     this.actions.createForumCategory({
-      id: tId,
+      _id: tId,
       createdAt: new Date(),
       name: this.newCategoryName
     });

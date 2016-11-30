@@ -21,7 +21,7 @@ export class BlogActions {
     this.ngRedux.dispatch({ type: BlogActions.CREATE_BLOG_POST, blogPost });
   }
 
-  updatePost(id, blogPost: Object): void {
+  updatePost(id: String, blogPost: Object): void {
     this.ngRedux.dispatch({ type: BlogActions.UPDATE_BLOG_POST, id, blogPost });
   }
 
@@ -44,7 +44,7 @@ export class BlogActions {
     );
   }
 
-  deletePost(id): void {
+  deletePost(id: String): void {
     this.ngRedux.dispatch({ type: BlogActions.DELETE_BLOG_POST, id });
   }
 }
