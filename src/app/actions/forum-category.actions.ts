@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import * as Redux from 'redux';
+import { AuthHttp } from 'angular2-jwt';
+
 import { IAppState } from '../store';
+import { DiscoveryService } from '../common/discovery.service';
 
 @Injectable()
 export class ForumCategoryActions {
@@ -9,7 +12,7 @@ export class ForumCategoryActions {
   static UPDATE_FORUM_CATEGORY: string = 'UPDATE_FORUM_CATEGORY';
   static GET_FORUM_CATEGORIES: string = 'GET_FORUM_CATEGORIES';
   static DELETE_FORUM_CATEGORY: string = 'DELETE_FORUM_CATEGORY';
-  constructor(
+  constructor(private authHttp: AuthHttp, private discoverService: DiscoveryService,
     private ngRedux: NgRedux<IAppState>) { }
 
   createForumCategory(forumCategory: Object): void {
@@ -20,8 +23,18 @@ export class ForumCategoryActions {
     this.ngRedux.dispatch({ type: ForumCategoryActions.UPDATE_FORUM_CATEGORY, id, forumCategory });
   }
 
-  getCategories(forumCategories: Array<Object>): void {
-    this.ngRedux.dispatch({ type: ForumCategoryActions.GET_FORUM_CATEGORIES, forumCategories });
+  getCategories(): void {
+    this.discoverService.getServiceUrl('desert-monsters-forum-service',
+      (url) => {
+        this.authHttp.get(`http://${url}/categories`)
+          .map(res => res.json())
+          .subscribe(
+          data => data && data.ok && data.categories && this.ngRedux.dispatch({ type: ForumCategoryActions.GET_FORUM_CATEGORIES, forumCategories: data.categories }),
+          err => console.log(err)
+          );
+      },
+      err => console.log(err)
+    );
   }
 
   deleteCategory(id): void {

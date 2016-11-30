@@ -5,6 +5,7 @@ import { select } from 'ng2-redux';
 
 import { AuthService } from '../auth/auth.service';
 import { ForumCategoryActions } from '../../actions/forum-category.actions';
+import { ActiveForumCategoryActions } from '../../actions/active-forum-category.actions';
 import { DiscoveryService } from '../../common/discovery.service';
 
 import { CreateForumCategory } from '../category';
@@ -17,21 +18,22 @@ import { CreateForumCategory } from '../category';
 })
 export class ForumCategory {
 	@select('forumCategory') forumCategory$: any;
+	@select('activeForumCategory') activeForumCategory$: any;
+	
+	private currentCat: any;
 
-	constructor(private authHttp: AuthHttp, private actions: ForumCategoryActions, private discoverService: DiscoveryService, private authService: AuthService) { }
+	constructor(private authHttp: AuthHttp, private activeForumCategoryActions: ActiveForumCategoryActions, private forumCategoryActions: ForumCategoryActions, private discoverService: DiscoveryService, private authService: AuthService) { }
 
 	ngOnInit() {
-		this.discoverService.getServiceUrl('desert-monsters-forum-service',
-			(url) => {
-				this.authHttp.get(`http://${url}/categories`)
-					.map(res => res.json())
-					.subscribe(
-					data => data && data.ok && data.categories && data.categories.length && this.actions.getCategories(data.categories),
-					err => console.log(err)
-					);
-			},
-			err => console.log(err)
-		);
+		this.forumCategoryActions.getCategories();
+
+		this.activeForumCategory$.subscribe((cat) => {
+      this.currentCat = cat;
+    });
+	}
+
+	setCategory(id) {
+		this.activeForumCategoryActions.setActiveCategory(id);
 	}
 
 	expandMessage(message) {

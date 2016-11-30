@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import * as Redux from 'redux';
+import { AuthHttp } from 'angular2-jwt';
+
 import { IAppState } from '../store';
+import { DiscoveryService } from '../common/discovery.service';
 
 @Injectable()
 export class ForumPostActions {
@@ -9,7 +12,7 @@ export class ForumPostActions {
   static UPDATE_FORUM_POST: string = 'UPDATE_FORUM_POST';
   static GET_FORUM_POSTS: string = 'GET_FORUM_POSTS';
   static DELETE_FORUM_POST: string = 'DELETE_FORUM_POST';
-  constructor(
+  constructor(private authHttp: AuthHttp, private discoverService: DiscoveryService,
     private ngRedux: NgRedux<IAppState>) { }
 
   createForumPost(forumPost: Object): void {
@@ -20,8 +23,22 @@ export class ForumPostActions {
     this.ngRedux.dispatch({ type: ForumPostActions.UPDATE_FORUM_POST, id, forumPost });
   }
 
-  getPosts(forumPosts: Array<Object>): void {
-    this.ngRedux.dispatch({ type: ForumPostActions.GET_FORUM_POSTS, forumPosts });
+  getPosts(category: any): void {
+    if(category === null) {
+      return this.ngRedux.dispatch({ type: ForumPostActions.GET_FORUM_POSTS, forumPosts: [] });
+    }
+
+     this.discoverService.getServiceUrl('desert-monsters-forum-service',
+      (url) => {
+        this.authHttp.get(`http://${url}/categories/${category._id}/posts`)
+          .map(res => res.json())
+          .subscribe(
+          data => data && data.ok && data.posts && data.posts && this.ngRedux.dispatch({ type: ForumPostActions.GET_FORUM_POSTS, forumPosts: data.posts }),
+          err => console.log(err)
+          );
+      },
+      err => console.log(err)
+    );
   }
 
   deletePost(id): void {

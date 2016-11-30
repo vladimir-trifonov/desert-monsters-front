@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { BaThemeConfigProvider } from '../../theme';
 import { AuthHttp } from 'angular2-jwt';
-
+import { Observable } from 'rxjs/Observable';
 import { NgRedux, select } from 'ng2-redux';
 
 import { IAppState } from '../../store';
@@ -17,15 +17,17 @@ import { DiscoveryService } from '../../common/discovery.service';
   template: require('./create-forum-post.html')
 })
 export class CreateForumPost {
+  @select('activeForumCategory') activeForumCategory$: Observable<any>;
 
   public dashboardColors = this._baConfig.get().colors.dashboard;
   public newPostText: string = '';
   private busy = false;
+  private currentCat: any;
 
   constructor(private _baConfig: BaThemeConfigProvider, private actions: ForumPostActions, private authHttp: AuthHttp, private discoverService: DiscoveryService) { }
 
   createForumPost() {
-    if (this.busy) {
+    if (this.busy || !this.currentCat) {
       return;
     }
 
@@ -34,13 +36,13 @@ export class CreateForumPost {
 
     // Set state saving
     this.busy = true;
-    
+
     // Add the post on the forum with a temporary ID
     this.actions.createForumPost({
       id: tId,
       createdAt: new Date(),
       content: {
-        text: this.newPostText,
+        title: this.newPostText,
         type: 'forum:text'
       }
     });
@@ -48,15 +50,15 @@ export class CreateForumPost {
     // When the saved post is returned from the db update the post data
     this.discoverService.getServiceUrl('desert-monsters-forum-service',
       (url) => {
-        this.authHttp.post(`http://${url}/posts`, {
-          text: _self.newPostText,
+        this.authHttp.post(`http://${url}/categories/${this.currentCat._id}/posts`, {
+          title: _self.newPostText,
           type: 'forum:text'
         })
           .map(res => res.json())
           .subscribe(
           data => {
             _self.busy = false;
-            
+
             data && data.ok && !!data.post && _self.actions.updatePost(tId, data.post);
 
             // Clear the input field
@@ -73,5 +75,11 @@ export class CreateForumPost {
         console.log(err)
       }
     );
+  }
+
+  ngOnInit() {
+    this.activeForumCategory$.subscribe((cat) => {
+      this.currentCat = cat;
+    });
   }
 }

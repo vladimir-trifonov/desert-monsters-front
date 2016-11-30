@@ -2,7 +2,7 @@
 	<create-forum-category></create-forum-category>
 	<div class="row forum-categories">
 		<div class="category-wrapper">
-			<button type="button" *ngFor="let category of forumCategory$ | async" data-id="{{category._id}}" class="btn btn-default">{{ category.name }}</button>
+			<button [ngClass]="{active: !currentCat ? false : currentCat._id===category._id}" type="button" (click)="setCategory(category._id)" *ngFor="let category of forumCategory$ | async" data-id="{{category._id}}" class="btn btn-default">{{ category.name }}</button>
 		</div>
 	</div>
 </ba-card>

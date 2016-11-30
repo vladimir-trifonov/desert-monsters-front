@@ -11,6 +11,11 @@
 			width: 100%;
 			margin: 5px 0;
 		}
+
+    button.active {
+      background-color: rgba(0, 0, 0, 0.2);
+      color: #ffffff;
+    }
 	}
 
   .forum-categories-container {
