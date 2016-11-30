@@ -19,17 +19,6 @@ export class ForumPost {
   constructor(private authHttp: AuthHttp, private actions: ForumPostActions, private discoverService: DiscoveryService, private authService: AuthService) { }
 
   ngOnInit() {
-    // this.discoverService.getServiceUrl('desert-monsters-forum-service',
-    //   (url) => {
-    //     this.authHttp.get(`http://${url}/users/${this.authService.getUserProfile().id}/posts`)
-    //       .map(res => res.json())
-    //       .subscribe(
-    //       data => data && data.ok && data.posts && data.posts.length && this.actions.getPosts(data.posts),
-    //       err => console.log(err)
-    //       );
-    //   },
-    //   err => console.log(err)
-    // );
   }
 
   expandMessage(message) {

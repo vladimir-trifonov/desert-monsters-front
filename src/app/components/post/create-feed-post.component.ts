@@ -46,7 +46,7 @@ export class CreateFeedPost {
     });
 
     // When the saved post is returned from the db update the post data
-    this.discoverService.getServiceUrl('desert-monsters-wall-service',
+    this.discoverService.getServiceUrl('desert-monsters-blog-service',
       (url) => {
         this.authHttp.post(`http://${url}/posts`, {
           text: _self.newPostText,

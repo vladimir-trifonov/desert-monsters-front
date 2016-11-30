@@ -24,7 +24,10 @@ export class Feed {
         this.authHttp.get(`http://${url}/users/${this.authService.getUserProfile().id}/posts`)
           .map(res => res.json())
           .subscribe(
-          data => data && data.ok && data.posts && data.posts.length && this.actions.getPosts(data.posts),
+          data => data && data.ok && data.posts && data.posts.length && this.actions.getPosts(data.posts.map((post) => {
+            post.content = post.content || {};
+            return post;
+          })),
           err => console.log(err)
           );
       },

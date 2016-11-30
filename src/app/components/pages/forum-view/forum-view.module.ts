@@ -7,8 +7,11 @@ import { ForumView } from './forum-view.component';
 import { routing }       from './forum-view.routing';
 
 import { ForumPost } from '../../forum';
+import { ForumCategory } from '../../forum';
 import { CreateForumPost } from '../../post';
+import { CreateForumCategory } from '../../category';
 import { ForumPostActions } from '../../../actions/forum-post.actions';
+import { ForumCategoryActions } from '../../../actions/forum-category.actions';
 
 @NgModule({
   imports: [
@@ -19,11 +22,14 @@ import { ForumPostActions } from '../../../actions/forum-post.actions';
   ],
   declarations: [
     ForumPost,
+    ForumCategory,
     CreateForumPost,
+    CreateForumCategory,
     ForumView
   ],
   providers: [
-    ForumPostActions
+    ForumPostActions,
+    ForumCategoryActions
   ]
 })
 export default class ForumViewModule {}

@@ -20,7 +20,7 @@ export class ForumCategoryActions {
     this.ngRedux.dispatch({ type: ForumCategoryActions.UPDATE_FORUM_CATEGORY, id, forumCategory });
   }
 
-  getCategorys(forumCategories: Array<Object>): void {
+  getCategories(forumCategories: Array<Object>): void {
     this.ngRedux.dispatch({ type: ForumCategoryActions.GET_FORUM_CATEGORIES, forumCategories });
   }
 
