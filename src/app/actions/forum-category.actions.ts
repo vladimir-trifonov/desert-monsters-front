@@ -23,7 +23,7 @@ export class ForumCategoryActions {
     this.ngRedux.dispatch({ type: ForumCategoryActions.UPDATE_FORUM_CATEGORY, id, forumCategory });
   }
 
-  getCategories(): void {
+  getCategoriesFromDb(): void {
     this.discoverService.getServiceUrl('desert-monsters-forum-service',
       (url) => {
         this.authHttp.get(`http://${url}/categories`)

@@ -1,12 +1,9 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { AsyncPipe } from '@angular2/common';
-import { AuthHttp } from 'angular2-jwt';
 import { select } from 'ng2-redux';
 
-import { AuthService } from '../auth/auth.service';
 import { ForumCategoryActions } from '../../actions/forum-category.actions';
 import { ActiveForumCategoryActions } from '../../actions/active-forum-category.actions';
-import { DiscoveryService } from '../../common/discovery.service';
 
 import { CreateForumCategory } from '../category';
 
@@ -22,10 +19,10 @@ export class ForumCategory {
 	
 	private currentCat: any;
 
-	constructor(private authHttp: AuthHttp, private activeForumCategoryActions: ActiveForumCategoryActions, private forumCategoryActions: ForumCategoryActions, private discoverService: DiscoveryService, private authService: AuthService) { }
+	constructor(private activeForumCategoryActions: ActiveForumCategoryActions, private forumCategoryActions: ForumCategoryActions) { }
 
 	ngOnInit() {
-		this.forumCategoryActions.getCategories();
+		this.forumCategoryActions.getCategoriesFromDb();
 
 		this.activeForumCategory$.subscribe((cat) => {
       this.currentCat = cat;

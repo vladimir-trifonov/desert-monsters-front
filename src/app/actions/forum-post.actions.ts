@@ -23,7 +23,7 @@ export class ForumPostActions {
     this.ngRedux.dispatch({ type: ForumPostActions.UPDATE_FORUM_POST, id, forumPost });
   }
 
-  getPosts(category: any): void {
+  getPostsFromDb(category: any): void {
     if(category === null) {
       return this.ngRedux.dispatch({ type: ForumPostActions.GET_FORUM_POSTS, forumPosts: [] });
     }
