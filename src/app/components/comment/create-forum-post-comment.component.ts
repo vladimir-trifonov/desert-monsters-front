@@ -6,6 +6,7 @@ import { NgRedux, select } from 'ng2-redux';
 
 import { IAppState } from '../../store';
 import { ForumPostActions } from '../../actions/forum-post.actions';
+import { AuthService } from '../auth';
 var uuid = require('node-uuid');
 
 import { DiscoveryService } from '../../common/discovery.service';
@@ -25,7 +26,7 @@ export class CreateForumPostComment {
   @Input() postId = null;
   @Input() categoryId = null;
 
-  constructor(private _baConfig: BaThemeConfigProvider, private actions: ForumPostActions, private authHttp: AuthHttp, private discoverService: DiscoveryService) { }
+  constructor(private authService: AuthService, private _baConfig: BaThemeConfigProvider, private actions: ForumPostActions, private authHttp: AuthHttp, private discoverService: DiscoveryService) { }
 
   createForumPostComment() {
     if (this.busy) {
@@ -42,7 +43,12 @@ export class CreateForumPostComment {
     this.actions.createPostComment(this.postId, {
       _id: tId,
       createdAt: new Date(),
-      text: this.newCommentText
+      content: {
+        text: this.newCommentText
+      },
+      user: {
+        name: this.authService.getUserName()
+      }
     });
 
     // When the saved category is returned from the db update the category data

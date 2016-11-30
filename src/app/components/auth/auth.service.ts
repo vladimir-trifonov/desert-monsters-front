@@ -27,6 +27,10 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('profile'));
   }
 
+  getUserName() {
+    return JSON.parse(localStorage.getItem('profile')).name;
+  }
+
   getUserAvatar() {
     return JSON.parse(localStorage.getItem('profile')).avatar;
   }

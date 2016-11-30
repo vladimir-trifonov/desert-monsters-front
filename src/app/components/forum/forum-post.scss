@@ -17,7 +17,15 @@
   }
 
   .forum-post-comments-wrapper {
-    margin-top: 20px;
+    margin-top: 10px;
+
+    .extra {
+      color: $text-dark;
+    }
+
+    .forum-post-comment {
+      margin: 5px 0;
+    }
   }
 
   .extra {

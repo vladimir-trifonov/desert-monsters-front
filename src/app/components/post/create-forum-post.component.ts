@@ -4,6 +4,7 @@ import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 import { NgRedux, select } from 'ng2-redux';
 
+import { AuthService } from '../auth';
 import { IAppState } from '../../store';
 import { ForumPostActions } from '../../actions/forum-post.actions';
 var uuid = require('node-uuid');
@@ -24,7 +25,7 @@ export class CreateForumPost {
   private busy = false;
   private currentCat: any;
 
-  constructor(private _baConfig: BaThemeConfigProvider, private actions: ForumPostActions, private authHttp: AuthHttp, private discoverService: DiscoveryService) { }
+  constructor(private authService: AuthService, private _baConfig: BaThemeConfigProvider, private actions: ForumPostActions, private authHttp: AuthHttp, private discoverService: DiscoveryService) { }
 
   createForumPost() {
     if (this.busy || !this.currentCat) {
@@ -44,6 +45,9 @@ export class CreateForumPost {
       content: {
         title: this.newPostText,
         type: 'forum:text'
+      },
+      user: {
+        name: this.authService.getUserName()
       }
     });
 
